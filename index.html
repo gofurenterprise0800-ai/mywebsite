@@ -94,7 +94,7 @@ input {
     <button onclick="scrollToProducts()">Shop Now</button>
   </div>
 </section>
-  <style>
+</style>
     .banner {
   background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
   height: 400px;
@@ -123,7 +123,7 @@ input {
 
 .banner button:hover {
   background: green;
-}
+}<style>
 <body>
 
 <header>
@@ -170,6 +170,11 @@ input {
 </div>
 
 <script>
+  function scrollToProducts() {
+  document.querySelector(".products").scrollIntoView({
+    behavior: "smooth"
+  });
+}
 let count = 0;
 
 function addToCart() {
