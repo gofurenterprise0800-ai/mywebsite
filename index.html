@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Online Store</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Fashion Store</title>
+
 <style>
 body {
-  font-family: Arial;
   margin: 0;
-  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
 }
 
 header {
-  background: black;
+  background: #000;
   color: white;
-  padding: 15px;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  align-items: center;
+}
+
+.cart-box {
+  background: red;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.container {
+  padding: 30px;
 }
 
 .products {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  padding: 20px;
 }
 
 .card {
   background: white;
   padding: 15px;
-  width: 200px;
-  text-align: center;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card img {
@@ -44,10 +62,26 @@ button {
   padding: 8px 12px;
   cursor: pointer;
   border-radius: 5px;
+  margin-top: 5px;
 }
 
 button:hover {
   background: green;
+}
+
+/* Checkout Section */
+.checkout {
+  background: white;
+  padding: 20px;
+  margin: 30px;
+  border-radius: 10px;
+  display: none;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
 }
 </style>
 </head>
@@ -55,33 +89,64 @@ button:hover {
 <body>
 
 <header>
-<h1>My Online Store 🛒</h1>
+  <h2>Urban Fashion 👕</h2>
+  <div>
+    Cart 🛒 <span class="cart-box" id="cart-count">0</span>
+    <button onclick="showCheckout()">Checkout</button>
+  </div>
 </header>
 
-<div class="products">
+<div class="container">
+  <div class="products">
 
-<div class="card">
-<img src="https://via.placeholder.com/200" alt="Product">
-<h3>Shoes</h3>
-<p>₹999</p>
-<button>Add to Cart</button>
+    <div class="card">
+      <img src="https://via.placeholder.com/250">
+      <h3>Premium T-Shirt</h3>
+      <p>₹599</p>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/250">
+      <h3>Stylish Jeans</h3>
+      <p>₹1299</p>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/250">
+      <h3>Sport Shoes</h3>
+      <p>₹1999</p>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+  </div>
 </div>
 
-<div class="card">
-<img src="https://via.placeholder.com/200" alt="Product">
-<h3>T-Shirt</h3>
-<p>₹499</p>
-<button>Add to Cart</button>
+<div class="checkout" id="checkout-section">
+  <h3>Checkout Page 💳</h3>
+  <input type="text" placeholder="Full Name">
+  <input type="text" placeholder="Address">
+  <input type="text" placeholder="Mobile Number">
+  <button onclick="placeOrder()">Place Order</button>
 </div>
 
-<div class="card">
-<img src="https://via.placeholder.com/200" alt="Product">
-<h3>Watch</h3>
-<p>₹1499</p>
-<button>Add to Cart</button>
-</div>
+<script>
+let count = 0;
 
-</div>
+function addToCart() {
+  count++;
+  document.getElementById("cart-count").innerText = count;
+}
+
+function showCheckout() {
+  document.getElementById("checkout-section").style.display = "block";
+}
+
+function placeOrder() {
+  alert("Order Placed Successfully 🎉");
+}
+</script>
 
 </body>
 </html>
